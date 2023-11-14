@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="icon" type="png" href="assest/logo/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="page-container">
+
+        <nav class="nav-bar">
+            <div class="search-bar">
+                <input type="search" name="search" id="search" spellcheck="false" placeholder="Eg Instagram">
+                <!-- search icon here -->
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="profile-container">
+                <ul class="profile">
+                    <li class="profile-circle">
+                        <img src="assest/img/user-profile.png" alt="user-image" class="user-profile">
+                    </li>
+                    <li class="drop-down">
+                        <ul class="drop-down-list">
+                            <li class="list">
+                                <a href="?action=profile&id=userid" class="a-menu-list profile">
+                                    <i class="fas fa-user list-icon"></i>
+                                    <span>Profile </span>
+                                </a>
+                            </li>
+                            <li class="list">
+                                <a href="handler/logout.php" class="a-menu-list logout">
+                                    <i class="fas fa-sign-out-alt list-icon"></i>
+                                    <span>Logout </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="main-container">
+
+            <div class="side-bar">
+                <div class="toggle-side-bar">
+                    <!-- side menu icon -->
+                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-chevron-right"></i>
+                </div>
+
+                <div class="inner-side-bar">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <img src="assest/logo/logo.png" alt="logo" class="logo-img">
+                        </div>
+                    </div>
+                    <ul class="side-menu">
+                        <li class="menu-list">
+                            <div class="inner-menu">
+                                <label class="label " onclick="showAddForm()">
+                                   <div class="icon">
+                                        <i class="fas fa-plus"></i>
+                                   </div>
+                                   <div class="text">Add</div>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="menu-list">
+                            <div class="inner-menu">
+                                <label class="label active" onclick="showPasswords()">
+                                   <div class="icon">
+                                        <i class="fas fa-key"></i>
+                                   </div>
+                                   <div class="text">Passwords</div>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="display-container" style="display: block;">
+                <div class="filter-box">
+                    <span class="filter-option stared" onclick="showStar(this)">
+                        <i class="far fa-star"></i>
+                        <i class="fas fa-star"></i> 
+                        Stared Password
+                    </span>
+                    <!-- <span class="filter-option recently">
+                        <i class="far fa-clock"></i>
+                        <i class="fas fa-clock"></i>
+                         Recently created
+                    </span> -->
+                </div>
+                <ul class="password-display">
+                    <li class="password-box">
+                        <div class="frame">
+                            <div class="frame-header">
+                                <div class="title">
+                                    <h2 class="app-name">
+                                        Instagram
+                                    </h2>
+                                    <p class="date"><i class="far fa-calendar-alt"></i> 11/11/2023</p>
+                                </div>
+                                <div class="more-options">
+                                    <form action="" method="post" class="view">
+                                        <button type="submit" name="view" value="<?php echo $id ;?>" class="button view-btn"> <i class="fas fa-eye"></i></button>
+                                    </form>
+                                    <form action="" method="post" class="delete">
+                                        <button type="submit" name="delete" value="<?php echo $id ;?>" class="button delete-btn"> <i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="frame-footer">
+                                <form class="footer-btns">
+                                    <i class="far fa-star"></i>
+                                    <i class="fas fa-star"></i> 
+                                </form>
+                                <div class="footer-btns">
+                                    <form action="" method="post" class="edit">
+                                        <button type="submit" name="edit" value="<?php echo $id ;?>" class="button edit-btn"> <i class="fas fa-edit"></i></button>
+                                    </form>                             
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="password-box stared">
+                        <div class="frame">
+                            <div class="frame-header">
+                                <div class="title">
+                                    <h2 class="app-name">
+                                        facebook
+                                    </h2>
+                                    <p class="date">
+                                        <i class="far fa-calendar-alt"></i>
+                                         29/12/2023
+                                    </p>
+                                </div>
+                                <div class="more-options">
+                                    <form action="" method="post" class="view">
+                                        <button type="submit" name="view" value="<?php echo $id ;?>" class="button view-btn"> <i class="fas fa-eye"></i></button>
+                                    </form>
+                                    <form action="" method="post" class="delete">
+                                        <button type="submit" name="delete" value="<?php echo $id ;?>" class="button delete-btn"> <i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="frame-footer">
+                                <form class="footer-btns active">
+                                    <i class="far fa-star"></i>
+                                    <i class="fas fa-star"></i> 
+                                </form>
+                                <div class="footer-btns">
+                                    <form action="" method="post" class="edit">
+                                        <button type="submit" name="edit" value="<?php echo $id ;?>" class="button edit-btn"> <i class="fas fa-edit"></i></button>
+                                    </form>                             
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="password-box">
+                        <div class="frame">
+                            <div class="frame-header">
+                                <div class="title">
+                                    <h2 class="app-name">
+                                        twitter
+                                    </h2>
+                                    <p class="date">
+                                        <i class="far fa-calendar-alt"></i>
+                                        15/12/2023
+                                    </p>
+                                </div>
+                                <div class="more-options">
+                                    <form action="" method="post" class="view">
+                                        <button type="submit" name="view" value="<?php echo $id ;?>" class="button view-btn"> <i class="fas fa-eye"></i></button>
+                                    </form>
+                                    <form action="" method="post" class="delete">
+                                        <button type="submit" name="delete" value="<?php echo $id ;?>" class="button delete-btn"> <i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="frame-footer">
+                                <form class="footer-btns">
+                                    <i class="far fa-star"></i>
+                                    <i class="fas fa-star"></i> 
+                                </form>
+                                <div class="footer-btns">
+                                    <form action="" method="post" class="edit">
+                                        <button type="submit" name="edit" value="<?php echo $id ;?>" class="button edit-btn"> <i class="fas fa-edit"></i></button>
+                                    </form>                             
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="password-box stared">
+                        <div class="frame">
+                            <div class="frame-header">
+                                <div class="title">
+                                    <h2 class="app-name">
+                                        Gmail
+                                    </h2>
+                                    <p class="date">
+                                        <i class="far fa-calendar-alt"></i>
+                                         31/12/2023
+                                    </p>
+                                </div>
+                                <div class="more-options">
+                                    <form action="" method="post" class="view">
+                                        <button type="submit" name="view" value="<?php echo $id ;?>" class="button view-btn"> <i class="fas fa-eye"></i></button>
+                                    </form>
+                                    <form action="" method="post" class="delete">
+                                        <button type="submit" name="delete" value="<?php echo $id ;?>" class="button delete-btn"> <i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="frame-footer">
+                                <form class="footer-btns active">
+                                    <i class="far fa-star"></i>
+                                    <i class="fas fa-star"></i> 
+                                </form>
+                                <div class="footer-btns">
+                                    <form action="" method="post" class="edit">
+                                        <button type="submit" name="edit" value="<?php echo $id ;?>" class="button edit-btn"> <i class="fas fa-edit"></i></button>
+                                    </form>                             
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </section>
+            
+            <section class="add-form" style="display: none;">
+                <h1 style="margin-top: 10px;">Add Password</h1>
+                <form action="handler?action=addPassword" method="post" class="add-password">
+                    <div class="input-field">
+                        <label class="label-name">
+                            <!-- Solid Google Play icon -->
+                            <i class="fab fa-google-play"></i>   
+                            App Name :
+                        </label>
+                        <input type="text" name="appName" id="appName" placeholder="Eg: Instagram" required />
+                    </div>
+                    <div class="input-field">
+                        <label class="label-name" >Password Type</label>
+                        <label class="radio-btns">
+                            <input type="radio" name="password_type" id="password_type" value="manual" checked="true" onclick="showManual()"/> Manual
+                        </label>
+                        <label>
+                            <input type="radio" name="password_type" id="password_type" value="auto" onclick="showAuto()" /> Auto Generate
+                        </label>
+                    </div>
+                    <div class="input-field password_type-field">
+                        <label class="manual">
+                            <input type="text" name="manual" id="manual"  required/>
+                        </label>
+                        <label class="auto" style="display: none;">
+                            <div class="field">
+                                <input type="text" name="auto" id="auto"  readonly> 
+                                    <div class="btn-containers">
+                                        <button type="button" class="changeBtn" onclick="GeneratePassword()">
+                                            <i class="fas fa-sync"></i>
+                                        </button>
+                                        <button type="button" class="copyBtn" onclick="CopyPassword()">
+                                            <i class="far fa-copy"></i>
+                                        </button>
+                                    </div>
+                                <div class="inner-fields">
+                                    <label class="checkbox-input">
+                                        <input type="checkbox" name="uppercase" id="uppercase" checked ="true"> uppercase
+                                    </label>
+                                    <label class="checkbox-input">
+                                        <input type="checkbox" name="lowercase" id="lowercase"> lowercase
+                                    </label>
+                                    <label class="checkbox-input">
+                                        <input type="checkbox" name="number" id="number"> number
+                                    </label>
+                                    <label class="checkbox-input">
+                                        <input type="checkbox" name="specialcharacter" id="specialCharacter"> special character
+                                    </label>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn" name="addPassword">Add Password</button>
+                </form>
+            </section>
+
+        </main>
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
